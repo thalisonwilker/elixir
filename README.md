@@ -94,7 +94,8 @@ Pois "x" não é reconhecido como função. Para alterar o valor de x, é necess
 
 #### As listas
 
-Listas são agrupamentos de valores, ex, [1,2,3,4, "banana", 2.3, nill, true, false]
+Listas são agrupamentos de valores, ex, [1,2,3,4, "banana", 2.3, nill, true, false]. Normalmente sequencia de dados similares.
+
 As listas são encadeadas, ou linked lists: "estruturas de dados lineares onde elementos (nós) não são armazenados contiguamente na memória, mas sim conectados por ponteiros, formando uma sequência lógica a partir de uma "cabeça" (primeiro nó)."
 Para acessar algum elemento, normalmente a lista precisa ser percorrida, já que acessar o índice não funciona.
 ex:
@@ -162,4 +163,42 @@ Exete o módulo List, para aplicar efetuar operações com listas.
 ```sh
     iex(2) > List.delete_at( [1,2,3,4], 2 )
     [1, 2, 4]
+```
+
+#### As tuplas
+
+```sh
+    iex(2) > x = {1,2,3,4}
+    {1, 2, 3, 4}
+```
+
+Acessar um elemento da tupla
+
+```sh
+    iex(2) > elem(x, 3)
+    4
+```
+
+O conceito de tuplas, em elixir, é bastante utilizado para controlar fluxo e retorno de funções.
+Ex:
+
+```sh
+    iex(2) > File.read("teste.txt")
+    {:ok, ""}
+```
+Nesse exemplo a tupla foi retornada com o resultado da operação de leitura do arquivo e o conteúdo do arquivo.
+
+```sh
+    iex(2) > File.read("teste_.txt")
+    {:error, :enoent}
+```
+Nesse exemplo a tupla foi retornada com o resultado da leitura do aquivo, o :error, e o tipo do erro: :enoent
+
+O elixir utilizar as tuplas como uma forma mais elegante de lidar com excessões.
+
+Caso seja necessário lançar a exceção, basta chamar a função assim:
+```sh
+    iex(2) > File.read!("teste_.txt")
+    ** (File.Error) could not read file "teste_.text": no such file or directory
+
 ```
