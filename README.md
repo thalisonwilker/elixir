@@ -186,19 +186,82 @@ Ex:
     iex(2) > File.read("teste.txt")
     {:ok, ""}
 ```
+
 Nesse exemplo a tupla foi retornada com o resultado da operação de leitura do arquivo e o conteúdo do arquivo.
 
 ```sh
     iex(2) > File.read("teste_.txt")
     {:error, :enoent}
 ```
+
 Nesse exemplo a tupla foi retornada com o resultado da leitura do aquivo, o :error, e o tipo do erro: :enoent
 
 O elixir utilizar as tuplas como uma forma mais elegante de lidar com excessões.
 
 Caso seja necessário lançar a exceção, basta chamar a função assim:
+
 ```sh
     iex(2) > File.read!("teste_.txt")
     ** (File.Error) could not read file "teste_.text": no such file or directory
 
 ```
+
+#### Keywords Lists, de forma rápida...
+
+São listas de tuplas
+
+```sh
+    iex(2) > x = [ {:a, "valor de A"}, {:b, "valor de B"} ]
+```
+
+Normalmente keywords lists são utilizadas para passar opções para funções, onde as chaves devem ordenadas e únicas
+
+#### Um pouco sobre Maps
+Os Maps são a estrutura de chave,valor no elixir
+
+Declarando um map com atoms
+
+```sh
+    iex(2) > x = %{a: 1, b: 2}
+```
+
+Acessando um valor com base na sua chave
+
+```sh
+    iex(2) > x[:a]
+    1
+```
+```sh
+    iex(2) > x[:b]
+    2
+```
+
+Declarando um map com strings
+```sh
+    iex(2) > y = %{"a" => 1, "b" => 2}
+```
+Acessando um valor com base na sua chave
+```sh
+    iex(2) > y["a"]
+    1
+```
+```sh
+    iex(2) > y["b"]
+    2
+```
+
+Quando o elemento é criado com atoms, é possível acessa-lo diretamente via .
+
+```sh
+    iex(2) > x.a
+    1
+```
+```sh
+    iex(2) > x.b
+    2
+```
+
+Quando o elemento é criado com strins, não é possível acessa-lo diretamente via .
+A notação de Maps com strings é bem mais útil no contexto do framework Pheonix
+
+O módulo Map. contém diversas funções para trabalhar com Maps
